@@ -9,6 +9,9 @@ filetype off		"required
 set belloff=all
 "*** *** *** *** *** ***"
 
+set nohlsearch
+set lazyredraw
+
 
 "*** *** *** *** *** ***"
 " Begin vim-plug section
@@ -53,6 +56,9 @@ Plug 'tpope/vim-commentary'
 " surronding text
 Plug 'tpope/vim-surround'
 
+" file tree
+Plug 'preservim/nerdtree'
+
 " All of your plugins must be added before the following line
 
 " Initialize plugin system
@@ -61,7 +67,7 @@ call plug#end()
 
 
 "*** *** *** *** *** ***"
-set number
+set number relativenumber
 "colorscheme cobalt2
 set background=dark
 colorscheme gruvbox
@@ -147,4 +153,15 @@ let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#bracket_same_line = 'false'
 let g:prettier#jsx_single_quote = 'false'
 let g:prettier#semi = 'true'
+"*** *** *** *** *** ***"
+
+"*** *** *** *** *** ***"
+" NERDTree
+
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" NERDTree default size
+let g:NERDTreeWinSize=35
+
 "*** *** *** *** *** ***"
