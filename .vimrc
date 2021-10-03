@@ -162,6 +162,6 @@ let g:prettier#semi = 'true'
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " NERDTree default size
-let g:NERDTreeWinSize=35
+let g:NERDTreeWinSize=20
 
 "*** *** *** *** *** ***"
