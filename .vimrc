@@ -59,6 +59,11 @@ Plug 'tpope/vim-surround'
 " file tree
 Plug 'preservim/nerdtree'
 
+" markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
+" If you have nodejs and yarn
+
 " All of your plugins must be added before the following line
 
 " Initialize plugin system
