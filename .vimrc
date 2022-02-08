@@ -30,6 +30,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
 
 " React syntax highlighting and indenting plugin
 Plug 'pangloss/vim-javascript'
@@ -63,7 +64,8 @@ Plug 'preservim/nerdtree'
 " markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
-" If you have nodejs and yarn
+" git wrapper
+Plug 'tpope/vim-fugitive'
 
 " All of your plugins must be added before the following line
 
