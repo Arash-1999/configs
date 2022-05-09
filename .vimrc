@@ -32,6 +32,11 @@ Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'josa42/coc-go', {'do': 'yarn install --frozen-lockfile'}
 
+" snippet enigine
+Plug 'SirVer/ultisnips'
+" snippets
+Plug 'honza/vim-snippets'
+
 " React syntax highlighting and indenting plugin
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
