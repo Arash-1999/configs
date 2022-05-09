@@ -46,9 +46,6 @@ Plug 'ap/vim-css-color'
 " highlight indents
 Plug 'Yggdroot/indentLine'
 
-" move text
-Plug 'matze/vim-move'
-
 " prettier editor integration
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production'}
 
@@ -66,6 +63,13 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 " git wrapper
 Plug 'tpope/vim-fugitive'
+
+" fuzzy finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" performs a substitution depending on the pattern
+Plug 'AndrewRadev/switch.vim'
 
 " All of your plugins must be added before the following line
 
@@ -126,7 +130,10 @@ let g:indentLine_leadingSpaceEnabled = 1
 
 "*** *** *** *** *** ***"
 " moving text shortcuts
-let g:move_key_modifier = 'C'
+nnoremap <silent> <C-k> :move-2<cr>
+nnoremap <silent> <C-j> :move+<cr>
+xnoremap <silent> <C-k> :move-2<cr>gv
+xnoremap <silent> <C-j> :move'>+<cr>gv
 "*** *** *** *** *** ***"
 
 "*** *** *** *** *** ***"
@@ -147,7 +154,7 @@ let g:prettier#semi = 'true'
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " NERDTree default size
-let g:NERDTreeWinSize=20
+let g:NERDTreeWinSize=25
 
 "*** *** *** *** *** ***"
 
@@ -320,4 +327,47 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+"*** *** *** *** *** ***"
+
+
+"*** *** *** *** *** ***"
+"*** fzf ***"
+
+let $FZF_DEFAULT_OPTS .= ' --inline-info'
+
+
+let g:fzf_colors =
+\ { 'fg':         ['fg', 'Normal'],
+  \ 'bg':         ['bg', 'Normal'],
+  \ 'preview-bg': ['bg', 'NormalFloat'],
+  \ 'hl':         ['fg', 'Comment'],
+  \ 'fg+':        ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':        ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':        ['fg', 'Statement'],
+  \ 'info':       ['fg', 'PreProc'],
+  \ 'border':     ['fg', 'Ignore'],
+  \ 'prompt':     ['fg', 'Conditional'],
+  \ 'pointer':    ['fg', 'Exception'],
+  \ 'marker':     ['fg', 'Keyword'],
+  \ 'spinner':    ['fg', 'Label'],
+  \ 'header':     ['fg', 'Comment'] }
+
+"*** *** *** *** *** ***"
+
+
+"*** *** *** *** *** ***"
+"*** switch.vim ***"
+let g:switch_mapping = "-"
+
+" switch between camelCase -> MixedCase -> snake_case -> UPPER_CASE -> dash-case -> camelCase
+let g:switch_custom_definitions =
+  \ [
+  \   {
+  \     '\<\(\l\)\(\l\+\(\u\l\+\)\+\)\>': '\=toupper(submatch(1)) . submatch(2)',
+  \     '\<\(\u\l\+\)\(\u\l\+\)\+\>': "\\=tolower(substitute(submatch(0), '\\(\\l\\)\\(\\u\\)', '\\1_\\2', 'g'))",
+  \     '\<\(\l\+\)\(_\l\+\)\+\>': '\U\0',
+  \     '\<\(\u\+\)\(_\u\+\)\+\>': "\\=tolower(substitute(submatch(0), '_', '-', 'g'))",
+  \     '\<\(\l\+\)\(-\l\+\)\+\>': "\\=substitute(submatch(0), '-\\(\\l\\)', '\\u\\1', 'g')",
+  \   }
+  \ ]
 "*** *** *** *** *** ***"
