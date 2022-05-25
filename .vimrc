@@ -376,3 +376,10 @@ let g:switch_custom_definitions =
   \   }
   \ ]
 "*** *** *** *** *** ***"
+
+
+
+"*** *** *** *** *** ***"
+"*** snippets ***"
+let g:UltiSnipsExpandTrigger="<c-y>"
+"*** *** *** *** *** ***"
