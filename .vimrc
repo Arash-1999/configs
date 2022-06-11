@@ -30,6 +30,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'fannheyward/coc-pyright', {'do':  'yarn install --frozen-lockfile'}
 
 " snippet enigine
 Plug 'SirVer/ultisnips'
