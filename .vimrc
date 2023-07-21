@@ -27,10 +27,10 @@ Plug 'othree/html5.vim'
 Plug 'vim-airline/vim-airline'
 
 " auto completer
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'fannheyward/coc-pyright', {'do':  'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'fannheyward/coc-pyright', {'do':  'yarn install --frozen-lockfile'}
 
 " snippet enigine
 Plug 'SirVer/ultisnips'
@@ -73,8 +73,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" rust syntax highlighting
+Plug 'rust-lang/rust.vim'
+
 " performs a substitution depending on the pattern
-Plug 'AndrewRadev/switch.vim'
+" Plug 'AndrewRadev/switch.vim'
 
 " All of your plugins must be added before the following line
 
@@ -312,6 +315,14 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+let g:coc_global_extensions = [
+      \'coc-json',
+      \'coc-tsserver',
+      \'coc-eslint',
+      \'coc-rust-analyzer',
+      \'coc-pyright',
+      \]
 "*** *** *** *** *** ***"
 
 "*** *** *** *** *** ***"
@@ -337,26 +348,6 @@ let g:fzf_colors =
   \ 'header':     ['fg', 'Comment'] }
 
 "*** *** *** *** *** ***"
-
-
-"*** *** *** *** *** ***"
-"*** switch.vim ***"
-let g:switch_mapping = "-"
-
-" switch between camelCase -> MixedCase -> snake_case -> UPPER_CASE -> dash-case -> camelCase
-let g:switch_custom_definitions =
-  \ [
-  \   {
-  \     '\<\(\l\)\(\l\+\(\u\l\+\)\+\)\>': '\=toupper(submatch(1)) . submatch(2)',
-  \     '\<\(\u\l\+\)\(\u\l\+\)\+\>': "\\=tolower(substitute(submatch(0), '\\(\\l\\)\\(\\u\\)', '\\1_\\2', 'g'))",
-  \     '\<\(\l\+\)\(_\l\+\)\+\>': '\U\0',
-  \     '\<\(\u\+\)\(_\u\+\)\+\>': "\\=tolower(substitute(submatch(0), '_', '-', 'g'))",
-  \     '\<\(\l\+\)\(-\l\+\)\+\>': "\\=substitute(submatch(0), '-\\(\\l\\)', '\\u\\1', 'g')",
-  \   }
-  \ ]
-"*** *** *** *** *** ***"
-
-
 
 "*** *** *** *** *** ***"
 "*** snippets ***"
