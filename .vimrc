@@ -32,11 +32,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'fannheyward/coc-pyright', {'do':  'yarn install --frozen-lockfile'}
 
-" snippet enigine
-Plug 'SirVer/ultisnips'
-" snippets
-Plug 'honza/vim-snippets'
-
 " React syntax highlighting and indenting plugin
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
@@ -138,10 +133,12 @@ let g:indentLine_leadingSpaceEnabled = 1
 
 "*** *** *** *** *** ***"
 " moving text shortcuts
-nnoremap <silent> <C-k> :move-2<cr>
-nnoremap <silent> <C-j> :move+<cr>
-xnoremap <silent> <C-k> :move-2<cr>gv
-xnoremap <silent> <C-j> :move'>+<cr>gv
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 "*** *** *** *** *** ***"
 
 "*** *** *** *** *** ***"
@@ -347,9 +344,4 @@ let g:fzf_colors =
   \ 'spinner':    ['fg', 'Label'],
   \ 'header':     ['fg', 'Comment'] }
 
-"*** *** *** *** *** ***"
-
-"*** *** *** *** *** ***"
-"*** snippets ***"
-let g:UltiSnipsExpandTrigger="<c-y>"
 "*** *** *** *** *** ***"
